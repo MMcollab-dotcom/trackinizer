@@ -11,9 +11,15 @@ All notable trackinizer changes are documented here. This project follows
   `Client.list_kind(..., receipt_id=ID)`, and `trax experiment [FILTER ...] --receipt-id ID`
   return only rows whose `config.executions[].receipt` equals the id exactly. The
   clause runs in the `WHERE` before `LIMIT` and composes with the existing filters;
-  any other kind is a 400 on the wire and a refused flag in the CLI. Migration 022
+  any other kind is a 400 on the wire and a refused flag in the CLI. Migration 025
   adds a `jsonb_path_ops` GIN index on `experiment_config` so the containment probe
   is indexed.
+- `trax export` and `GET /api/export` write the whole graph as JSON lines:
+  every inquiry, edge, and `change_log` row, experiment metrics, and
+  agent-session records, read in one snapshot. The header names the applied
+  schema migrations, and an unchanged graph exports byte-for-byte the same,
+  so the file works as a backup that outlives a datadir and as input to a
+  mirror. Embeddings, session ciphertext, and auth tables are left out.
 
 ## 0.1.4 - 2026-08-20
 

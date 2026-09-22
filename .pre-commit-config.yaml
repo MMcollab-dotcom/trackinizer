@@ -42,6 +42,9 @@
 #     git --no-pager diff -z --name-only --cached --relative \
 #       | xargs -0 --no-run-if-empty uv --quiet run --frozen --group pre-commit pre-commit run --files
 #
+#   # Run all the files from CWD.
+#     uv --quiet run --frozen --group pre-commit pre-commit run --files $(git ls-files .)
+#
 #   One hook at a time, by id (`ruff-check`, `ty-check`, `pytest-global`, ...):
 #     uv --quiet run --frozen --group pre-commit pre-commit run ruff-check --all-files
 #     uv --quiet run --frozen --group pre-commit pre-commit run pytest-global --hook-stage pre-push
@@ -178,7 +181,7 @@ repos:
   # Validates uv.lock matches pyproject.toml (no network needed).
   # Run `uv lock` manually when changing dependencies.
   - repo: https://github.com/astral-sh/uv-pre-commit
-    rev: 0.12.7
+    rev: 0.12.17
     hooks:
 
       - id: uv-lock
@@ -275,7 +278,7 @@ repos:
           )
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.16.5
+    rev: v0.16.8
     hooks:
       # Exclusions defined in pyproject.toml.
       #
