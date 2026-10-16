@@ -11,7 +11,7 @@ All notable trackinizer changes are documented here. This project follows
   `Client.list_kind(..., receipt_id=ID)`, and `trax experiment [FILTER ...] --receipt-id ID`
   return only rows whose `config.executions[].receipt` equals the id exactly. The
   clause runs in the `WHERE` before `LIMIT` and composes with the existing filters;
-  any other kind is a 400 on the wire and a refused flag in the CLI. Migration 049
+  any other kind is a 400 on the wire and a refused flag in the CLI. Migration 050
   adds a `jsonb_path_ops` GIN index on `experiment_config` so the containment probe
   is indexed.
 - Variables: an org stores launch variables in a `variables` table, served by

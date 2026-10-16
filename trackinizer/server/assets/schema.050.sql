@@ -1,4 +1,4 @@
--- schema.049.sql -- index receipt membership in existing Experiment configs.
+-- schema.050.sql -- index receipt membership in existing Experiment configs.
 --
 -- Adds a GIN index over ``inquiries.experiment_config`` so the execution-receipt
 -- reverse lookup (``experiment_config @> {...}`` containment) is served by an
@@ -9,7 +9,7 @@
 -- records the baseline unrun and executes only this file, so the two must stay
 -- in step -- pinned by ``schema_migration_test.py``.
 --
--- Numbered 049: migrations through schema.048.sql already belong to main.
+-- Numbered 050: schema.049.sql is reserved by another pending migration.
 --
 -- Purely additive DDL against an existing column, safe against the OLD code and
 -- its duration is not downtime. Migrations run transactionally, so CREATE INDEX
